@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { AuthProvider, useAuth } from '@/context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 import { AppProvider, useApp } from '@/context/AppContext';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { Header } from '@/components/layout/Header';
@@ -54,8 +54,6 @@ const AdminPortalInner: React.FC = () => {
 
 export default function AdminPortalPage() {
   return (
-    <AuthProvider>
-      <AdminPortalInner />
-    </AuthProvider>
+    <AdminPortalInner />
   );
 }
