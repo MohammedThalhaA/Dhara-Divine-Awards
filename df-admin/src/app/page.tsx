@@ -145,6 +145,15 @@ export default function HomeApp() {
     }
   }, [showPreloader]);
 
+  // Register Service Worker for PWA installability
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then((reg) => console.log('Service Worker registered successfully:', reg.scope))
+        .catch((err) => console.error('Service Worker registration failed:', err));
+    }
+  }, []);
+
   // Sync route changes to scroll & mobile menu states
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
