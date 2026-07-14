@@ -842,6 +842,8 @@ footer {
   }
   .hero { padding-top: 24px; padding-bottom: 32px; }
   .hero-copy h1 { font-size: 34px; }
+  .hero-actions { justify-content: center; }
+  .btn { white-space: normal; text-align: center; line-height: 1.4; }
   .hero-stats { gap: 24px; }
   .hero-badge { display: none; }
   .trust-strip-wrapper {
