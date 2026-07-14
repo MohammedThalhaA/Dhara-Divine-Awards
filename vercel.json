@@ -2,15 +2,15 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://dhara-devineawards.vercel.app/api/:path*"
+      "destination": "https://dhara-divineawardsadmin.vercel.app/api/:path*"
     },
     {
       "source": "/admin/:path*",
-      "destination": "https://dhara-devineawards.vercel.app/:path*"
+      "destination": "https://dhara-divineawardsadmin.vercel.app/:path*"
     },
     {
       "source": "/_next/:path*",
-      "destination": "https://dhara-devineawards.vercel.app/_next/:path*"
+      "destination": "https://dhara-divineawardsadmin.vercel.app/_next/:path*"
     },
     {
       "source": "/((?!admin|_next|api).*)",
