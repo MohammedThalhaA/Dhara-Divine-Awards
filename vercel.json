@@ -6,7 +6,7 @@
     },
     {
       "source": "/admin/:path*",
-      "destination": "https://dhara-divineawardsadmin.vercel.app/:path*"
+      "destination": "https://dhara-divineawardsadmin.vercel.app/admin/:path*"
     },
     {
       "source": "/_next/:path*",
