@@ -108,7 +108,7 @@ export default function AboutUs() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-4">
         <div className="lg:col-span-6 relative overflow-hidden rounded-3xl border border-[#D9CBB0]/60 shadow-xl group aspect-[4/3] bg-[#F4EFE6] cursor-pointer">
           <img
-            src="/images/News/DHARA Divine Awards.jpg"
+            src="/images/News/DHARA Divine Awards Ceremony.jpg"
             alt="Dhara Divine Awards Ceremony"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
             onError={(e) => {

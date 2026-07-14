@@ -36,7 +36,7 @@ export default function EventHighlights() {
     {
       id: "dhara-divine-awards",
       title: "Dhara Divine Awards",
-      image: "/images/News/DHARA Divine Awards.jpg",
+      image: "/images/News/DHARA Divine Awards Ceremony.jpg",
       category: "Awards & Recognition",
       date: "24 Jan, 2025",
       time: "09:00 AM",

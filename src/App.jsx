@@ -347,7 +347,7 @@ export default function App() {
         }}>
           <video 
             src="/video/dhara_hero.mp4" 
-            poster="/images/News/DHARA Divine Awards.jpg" 
+            poster="/images/News/DHARA Divine Awards Ceremony.jpg" 
             autoPlay 
             loop 
             muted={heroVideoMuted}
