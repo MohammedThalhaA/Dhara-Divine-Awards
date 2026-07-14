@@ -305,15 +305,15 @@ export default function HomeApp() {
               <div className="hero-stats">
                 <div className="hero-stat">
                   <div className="num" style={{ color: 'var(--color-saffron-glow-dark)', fontFamily: 'var(--font-serif)' }}>3</div>
-                  <div className="label" style={{ fontFamily: 'var(--font-mono)', textTransform: 'uppercase', fontSize: '11px', tracking: '1px' }}>Founding Trustees</div>
+                  <div className="label" style={{ fontFamily: 'var(--font-mono)', textTransform: 'uppercase', fontSize: '11px', letterSpacing: '1px' }}>Founding Trustees</div>
                 </div>
                 <div className="hero-stat">
                   <div className="num" style={{ color: 'var(--color-saffron-glow-dark)', fontFamily: 'var(--font-serif)' }}>40+</div>
-                  <div className="label" style={{ fontFamily: 'var(--font-mono)', textTransform: 'uppercase', fontSize: '11px', tracking: '1px' }}>Community Programs</div>
+                  <div className="label" style={{ fontFamily: 'var(--font-mono)', textTransform: 'uppercase', fontSize: '11px', letterSpacing: '1px' }}>Community Programs</div>
                 </div>
                 <div className="hero-stat">
                   <div className="num" style={{ color: 'var(--color-saffron-glow-dark)', fontFamily: 'var(--font-serif)' }}>80G</div>
-                  <div className="label" style={{ fontFamily: 'var(--font-mono)', textTransform: 'uppercase', fontSize: '11px', tracking: '1px' }}>Tax Exemption</div>
+                  <div className="label" style={{ fontFamily: 'var(--font-mono)', textTransform: 'uppercase', fontSize: '11px', letterSpacing: '1px' }}>Tax Exemption</div>
                 </div>
               </div>
             </div>
