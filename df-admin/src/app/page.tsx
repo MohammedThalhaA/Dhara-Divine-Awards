@@ -242,7 +242,7 @@ export default function HomeApp() {
       case 'highlights':
         return <div className="animate-fade-in"><EventsActivities /></div>;
       case 'thankyou':
-        return <div className="animate-fade-in"><ThankYouPage /></div>;
+        return <div className="animate-fade-in"><ThankYouPage successData={successData} setActiveTab={setActiveTab} /></div>;
       default:
         return renderHomeView();
     }

@@ -1,13 +1,9 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { CheckCircle, Share2, Sparkles, Home, Printer, Heart, Ticket, Award, MessageSquare, Landmark, Clock, Calendar, ShieldCheck } from 'lucide-react';
 
-export default function ThankYouPage() {
-  const location = useLocation();
-  const navigate = useNavigate();
-
+export default function ThankYouPage({ successData: propSuccessData, setActiveTab }) {
   // Load state payload passed from nomination/enquiry/registration redirection
-  const successData = location.state || {
+  const successData = propSuccessData || {
     title: 'Submission Received',
     message: 'Namaste. Your submission has been successfully received by Dhara Foundations. Thank you for participating in our mission of Seva and culture preservation.',
     details: [
@@ -356,7 +352,7 @@ export default function ThankYouPage() {
             </button>
 
             <button
-              onClick={() => navigate('/')}
+              onClick={() => setActiveTab('home')}
               className="w-full sm:w-auto px-5 py-2.5 bg-[var(--color-deep-forest)] hover:opacity-90 text-white font-bold rounded-xl shadow-md transition-all text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 cursor-pointer"
             >
               <Home className="w-4 h-4" />
