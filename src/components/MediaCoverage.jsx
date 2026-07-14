@@ -19,14 +19,14 @@ export default function MediaCoverage({ onSubmitSuccess }) {
     {
       title: "Hon'ble Union Finance Minister Smt. Nirmala Sitharaman Invited as Chief Guest for Dhara Divine Awards",
       date: "24 Jan, 2025",
-      image: "/images/News/DHARA Divine Awards.jpg",
+      image: "/images/News/Hon'ble Union Finance Minister Smt. Nirmala Sitharaman Invited as Chief Guest for Dhara Divine Awards.jpg",
       link: "https://www.youtube.com/live/qOAbFfB22uI",
       summary: "Hon'ble Union Finance Minister Smt. Nirmala Sitharaman was formally invited as a Chief Guest and dignitary to the flagship Dhara Divine Awards Ceremony, recognizing unsung grassroots heroes and NGOs for exemplary humanitarian and cultural service inspired by spiritual values."
     },
     {
       title: "Smt. Vanathi Srinivasan Graces Dhara Divine Awards Ceremony as Chief Guest",
       date: "24 Jan, 2025",
-      image: "/images/News/Mupperum Vizha.jpg",
+      image: "/images/News/Smt. Vanathi Srinivasan Graces Dhara Divine Awards Ceremony as Chief Guest.jpg",
       link: "https://www.youtube.com/live/qOAbFfB22uI",
       summary: "Prominent leader and MLA Smt. Vanathi Srinivasan was invited as a Chief Guest and dignitary to grace the Dhara Divine Awards Ceremony, joining Dhara Foundations to recognize dedicated grassroots champions, philanthropists, and silent social workers performing noble seva."
     },
@@ -40,7 +40,7 @@ export default function MediaCoverage({ onSubmitSuccess }) {
     {
       title: "DHARA Divine Awards Ceremony",
       date: "24 Jan, 2025",
-      image: "/images/Home section/Hon'ble justice Shri G.R Swaminathan  Avl..jpg",
+      image: "/images/News/DHARA Divine Awards Ceremony.jpg",
       link: "https://dharafoundations.in/newsDetails/27",
       summary: "Felicitation of 63 silent service leaders of Sanatana Dharma at the Chinmaya Heritage Centre in Chetpet, Chennai, in the presence of Madras HC Judge Justice GR Swaminathan."
     },
