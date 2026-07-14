@@ -1,6 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "@/index.css";
 import { AuthProvider } from "@/context/AuthContext";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#401C0C",
+};
 
 export const metadata: Metadata = {
   title: "Dhara Foundations | Divine Awards",
