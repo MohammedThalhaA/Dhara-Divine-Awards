@@ -338,7 +338,7 @@ const defaultGalleryImages = [
 
 export default function GalleryPage() {
   const cleanCategory = (cat) => {
-    if (cat === '1. Spiritual Piller') return '1. Spiritual Pillar';
+    if (cat === '1. Spiritual Piller') return '1. Spiritual Pillars';
     if (cat === '2. Institutions and Organisation') return '2. Institutions and Organisations';
     return cat;
   };
@@ -376,7 +376,7 @@ export default function GalleryPage() {
   const categories = [
     'All Sections',
     'Highlights',
-    '1. Spiritual Pillar',
+    '1. Spiritual Pillars',
     '2. Institutions and Organisations',
     '3. Individuals and Professionals',
     '4. Grass Route Eminents'
@@ -384,7 +384,7 @@ export default function GalleryPage() {
 
   const sectionDescriptions = {
     'Highlights': 'Key moments from sacred assemblies, chief guest felicitations, and the grand Dhara Divine Awards ceremony.',
-    '1. Spiritual Pillar': 'Sivachariyars, Bhattachariyars, Sivanadiyars, and Spiritual Masters who uphold sacred traditions.',
+    '1. Spiritual Pillars': 'Sivachariyars, Bhattachariyars, Sivanadiyars, and Spiritual Masters who uphold sacred traditions.',
     '2. Institutions and Organisations': 'Spiritual schools, siddha hospitals, anna dhan centers, and dedicated institutions serving society.',
     '3. Individuals and Professionals': 'Eminent judges, doctors, scientists, authors, artists, and leaders advancing Sanatana Dharma.',
     '4. Grass Route Eminents': 'Unsung heroes: Veda padashalas, temple sculptors, traditional artists, gho shalas, and sacred craftsmen.'
@@ -421,7 +421,7 @@ export default function GalleryPage() {
 
   // Determine sections to display
   const sectionsToDisplay = selectedCategory === 'All Sections'
-    ? ['Highlights', '1. Spiritual Pillar', '2. Institutions and Organisations', '3. Individuals and Professionals', '4. Grass Route Eminents']
+    ? ['Highlights', '1. Spiritual Pillars', '2. Institutions and Organisations', '3. Individuals and Professionals', '4. Grass Route Eminents']
     : [selectedCategory];
 
   return (
@@ -438,6 +438,23 @@ export default function GalleryPage() {
         <p className="text-sm text-[var(--ink-soft)] leading-relaxed pt-2">
           Glimpses from the sacred assemblies, felicitations of unsung heroes, guest dignitaries, and ongoing grassroots welfare campaigns.
         </p>
+        
+        {/* Top Brochure Download Button */}
+        <div className="pt-2 flex justify-center">
+          <a 
+            href="/images/Dhara Divine Awards.pdf" 
+            download="Dhara Divine Awards 2025 Brochure.pdf"
+            className="btn btn-primary sparkle-shimmer-btn inline-flex items-center gap-2"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+          >
+            <svg className="w-4.5 h-4.5 download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span>Download 2025 Brochure (PDF)</span>
+          </a>
+        </div>
       </div>
 
       {/* Filters Bar */}
