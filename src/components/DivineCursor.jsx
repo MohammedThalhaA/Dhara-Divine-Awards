@@ -80,8 +80,19 @@ export default function DivineCursor() {
       }
       ctx.lineTo(cx, cy - outerRadius);
       ctx.closePath();
+      
+      // Shadow & fill
+      ctx.shadowBlur = 4;
+      ctx.shadowColor = 'rgba(64, 28, 12, 0.4)';
       ctx.fillStyle = color;
       ctx.fill();
+      
+      // Outline to stand out on white
+      ctx.shadowColor = 'transparent';
+      ctx.strokeStyle = `rgba(64, 28, 12, ${alpha * 0.25})`;
+      ctx.lineWidth = 0.6;
+      ctx.stroke();
+      
       ctx.restore();
     }
 
@@ -120,10 +131,19 @@ export default function DivineCursor() {
           ctx.globalAlpha = p.alpha;
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.size / 2, 0, Math.PI * 2);
-          ctx.fillStyle = p.color;
+          
+          // Shadow & fill
           ctx.shadowBlur = 4;
-          ctx.shadowColor = p.color;
+          ctx.shadowColor = 'rgba(64, 28, 12, 0.4)';
+          ctx.fillStyle = p.color;
           ctx.fill();
+          
+          // Outline to stand out on white
+          ctx.shadowColor = 'transparent';
+          ctx.strokeStyle = `rgba(64, 28, 12, ${p.alpha * 0.25})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+          
           ctx.restore();
         }
 
@@ -147,7 +167,6 @@ export default function DivineCursor() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-[99999]"
-      style={{ mixBlendMode: 'screen' }}
     />
   );
 }
