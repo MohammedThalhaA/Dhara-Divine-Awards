@@ -67,6 +67,29 @@ export default function AboutUs() {
 
 
 
+  const awardPillars = [
+    {
+      title: "Spiritual Service",
+      description: "Honouring individuals who uplift society through devotion, wisdom, and the path of dharma — from temple caretakers to spiritual healers."
+    },
+    {
+      title: "Grassroots Impact",
+      description: "Recognizing unsung heroes working selflessly in slums, villages, and disaster zones where real change begins."
+    },
+    {
+      title: "Corporate to Commoner",
+      description: "Appreciating the wide spectrum of service — from CEOs driving CSR initiatives to dedicated local volunteers."
+    },
+    {
+      title: "Beyond Awards - A Responsibility",
+      description: "Not just a trophy — a platform of encouragement with a ₹25,000 cash reward to fuel more good work."
+    },
+    {
+      title: "A Spiritual Gathering with a Cause",
+      description: "Merging culture, spirituality, and celebration in a sacred, soulful evening of purpose, music, and mantras."
+    }
+  ];
+
   return (
     <div className="py-16 px-6 md:px-12 max-w-7xl mx-auto w-full space-y-20">
       {/* Hero / Header */}
@@ -196,7 +219,7 @@ export default function AboutUs() {
           </p>
         </div>
 
-        <div className="bg-[#401C0C] rounded-3xl border border-[#D9CBB0]/20 p-8 md:p-12 relative overflow-hidden shadow-xl text-white">
+        <div className="bg-[#401C0C] rounded-3xl border border-[#D9CBB0]/20 p-8 md:p-12 relative overflow-hidden shadow-xl text-white space-y-12">
           {/* Subtle background graphics */}
           <div className="absolute right-0 bottom-0 opacity-5 pointer-events-none translate-x-12 translate-y-12 select-none">
             <svg width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
@@ -206,6 +229,7 @@ export default function AboutUs() {
             </svg>
           </div>
 
+          {/* Top section: Intro, Theme, and Aims */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative z-10">
             {/* Left side: General Intro */}
             <div className="lg:col-span-6 space-y-6">
@@ -226,20 +250,10 @@ export default function AboutUs() {
                   "The Dhara Divine Awards stand as a tribute to those who make a difference—not for recognition, but because service is their calling."
                 </p>
               </div>
-              
-              <div className="pt-4">
-                <div className="inline-flex items-center gap-4 bg-white/5 border border-[var(--color-saffron-glow)]/35 px-6 py-4 rounded-2xl">
-                  <Award className="w-8 h-8 text-[var(--color-saffron-glow)]" />
-                  <div>
-                    <span className="text-[10px] uppercase tracking-wider font-mono text-neutral-300 block font-bold">Award Value</span>
-                    <span className="text-lg font-bold text-[#FFD27F]">₹25,000 Cash Prize &amp; Trophy</span>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Right side: Theme and Aims */}
-            <div className="lg:col-span-6 space-y-8">
+            <div className="lg:col-span-6 space-y-6">
               {/* Theme Block */}
               <div className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-3">
                 <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--color-saffron-glow)] font-bold block">
@@ -254,11 +268,11 @@ export default function AboutUs() {
               </div>
 
               {/* Aims Block */}
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <h5 className="font-bold text-sm text-[#FFD27F] uppercase tracking-wider font-sans">
                   The awards aim to:
                 </h5>
-                <div className="grid grid-cols-1 gap-3">
+                <div className="grid grid-cols-1 gap-2">
                   {[
                     "Honour excellence in social service.",
                     "Celebrate leadership driven by compassion.",
@@ -273,6 +287,47 @@ export default function AboutUs() {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Bottom section: Award Pillars */}
+          <div className="relative z-10 pt-8 border-t border-white/10 space-y-6">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+              <div className="space-y-1">
+                <h5 className="font-bold text-lg text-[#FFD27F] font-serif">
+                  Core Award Pillars &amp; Categories
+                </h5>
+                <p className="text-xs text-neutral-300 font-sans">
+                  Understanding the structural fields of service recognized under the Dhara Divine Awards.
+                </p>
+              </div>
+              
+              <div className="flex-shrink-0">
+                <div className="inline-flex items-center gap-3 bg-white/5 border border-[var(--color-saffron-glow)]/35 px-4 py-2.5 rounded-xl">
+                  <Award className="w-5 h-5 text-[var(--color-saffron-glow)]" />
+                  <div>
+                    <span className="text-[9px] uppercase tracking-wider font-mono text-neutral-300 block font-bold">Award Value</span>
+                    <span className="text-sm font-bold text-[#FFD27F]">₹25,000 Cash Prize &amp; Trophy</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {awardPillars.map((pillar, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[var(--color-saffron-glow)]/30 rounded-2xl p-5 transition-all duration-300 flex gap-4 items-start cursor-pointer"
+                >
+                  <div className="w-8 h-8 rounded-xl bg-[var(--color-saffron-glow)]/10 text-[var(--color-saffron-glow)] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-xs font-bold font-mono text-[var(--color-saffron-glow)]">0{idx + 1}</span>
+                  </div>
+                  <div className="space-y-1">
+                    <h6 className="font-bold text-sm text-[#FFD27F] font-serif">{pillar.title}</h6>
+                    <p className="text-xs text-neutral-300 leading-relaxed font-sans">{pillar.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
