@@ -18,14 +18,6 @@ export default function DivineCursor() {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
-    // Inject CSS to hide default cursor globally
-    const styleEl = document.createElement('style');
-    styleEl.innerHTML = `
-      body, a, button, [role="button"], select, input, textarea {
-        cursor: none !important;
-      }
-    `;
-    document.head.appendChild(styleEl);
 
     let animationFrameId;
     let particles = [];
@@ -49,16 +41,8 @@ export default function DivineCursor() {
 
       // Check if hovering over clickable/interactive element
       const target = e.target;
-      if (target) {
-        const isClickable = 
-          target.tagName === 'A' || 
-          target.tagName === 'BUTTON' || 
-          target.closest('a') || 
-          target.closest('button') || 
-          target.closest('.cursor-pointer') ||
-          target.closest('.btn') ||
-          window.getComputedStyle(target).cursor === 'pointer';
-        
+      if (target && target instanceof Element) {
+        const isClickable = target.closest('a, button, select, input, textarea, [role="button"], .cursor-pointer, .btn');
         mouse.hovering = !!isClickable;
       }
 
@@ -226,7 +210,6 @@ export default function DivineCursor() {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
-      styleEl.remove();
       cancelAnimationFrame(animationFrameId);
     };
   }, [mounted]);
@@ -243,7 +226,8 @@ export default function DivineCursor() {
         width: '100vw',
         height: '100vh',
         pointerEvents: 'none',
-        zIndex: 99999
+        zIndex: 99999,
+        zoom: 1
       }}
     />,
     document.body
