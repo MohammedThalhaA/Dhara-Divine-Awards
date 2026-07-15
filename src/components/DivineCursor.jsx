@@ -1,9 +1,16 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 export default function DivineCursor() {
   const canvasRef = useRef(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     // If it's a touch device, disable cursor trail to keep mobile performance optimal
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
@@ -27,9 +34,9 @@ export default function DivineCursor() {
     window.addEventListener('resize', resizeCanvas);
 
     const handleMouseMove = (e) => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
+      // Direct viewport coordinates since canvas is portals-rendered at body level
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
       mouse.active = true;
 
       // Spawn 1-2 particles per mouse movement
@@ -166,12 +173,23 @@ export default function DivineCursor() {
       document.removeEventListener('mouseleave', handleMouseLeave);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [mounted]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-[99999]"
-    />
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        pointerEvents: 'none',
+        zIndex: 99999
+      }}
+    />,
+    document.body
   );
 }
