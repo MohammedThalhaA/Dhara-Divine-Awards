@@ -1,0 +1,116 @@
+/* Container for portal overlay */
+.divine-click-effect-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999999;
+}
+
+/* Base style for individual click wrappers */
+.divine-effect-item {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Central glowing spark */
+.divine-spark {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: divineSparkAnim 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Expanding aura ring */
+.divine-halo {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(255, 215, 0, 0.8);
+  border-radius: 50%;
+  animation: divineHaloAnim 850ms cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+}
+
+/* Shooting rays of light */
+.divine-ray {
+  position: absolute;
+  width: 2px;
+  height: 12px;
+  border-radius: 999px;
+  opacity: 0;
+  transform-origin: bottom center;
+}
+
+/* Ray directions (shooting outward at angles) */
+.ray-1 { transform: rotate(0deg) translateY(-15px); animation: divineRayAnim1 750ms cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.ray-2 { transform: rotate(60deg) translateY(-15px); animation: divineRayAnim2 750ms cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.ray-3 { transform: rotate(120deg) translateY(-15px); animation: divineRayAnim3 750ms cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.ray-4 { transform: rotate(180deg) translateY(-15px); animation: divineRayAnim4 750ms cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.ray-5 { transform: rotate(240deg) translateY(-15px); animation: divineRayAnim5 750ms cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.ray-6 { transform: rotate(300deg) translateY(-15px); animation: divineRayAnim6 750ms cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* Keyframes */
+@keyframes divineSparkAnim {
+  0% {
+    transform: scale(0.2);
+    opacity: 0.8;
+  }
+  30% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+}
+
+@keyframes divineHaloAnim {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(7.5);
+    opacity: 0;
+  }
+}
+
+/* Individual GPU accelerated translations for sparkles */
+@keyframes divineRayAnim1 {
+  0% { transform: rotate(0deg) translateY(-4px) scaleY(0.1); opacity: 0; }
+  20% { opacity: 0.9; }
+  100% { transform: rotate(0deg) translateY(-32px) scaleY(1.2); opacity: 0; }
+}
+@keyframes divineRayAnim2 {
+  0% { transform: rotate(60deg) translateY(-4px) scaleY(0.1); opacity: 0; }
+  20% { opacity: 0.9; }
+  100% { transform: rotate(60deg) translateY(-32px) scaleY(1.2); opacity: 0; }
+}
+@keyframes divineRayAnim3 {
+  0% { transform: rotate(120deg) translateY(-4px) scaleY(0.1); opacity: 0; }
+  20% { opacity: 0.9; }
+  100% { transform: rotate(120deg) translateY(-32px) scaleY(1.2); opacity: 0; }
+}
+@keyframes divineRayAnim4 {
+  0% { transform: rotate(180deg) translateY(-4px) scaleY(0.1); opacity: 0; }
+  20% { opacity: 0.9; }
+  100% { transform: rotate(180deg) translateY(-32px) scaleY(1.2); opacity: 0; }
+}
+@keyframes divineRayAnim5 {
+  0% { transform: rotate(240deg) translateY(-4px) scaleY(0.1); opacity: 0; }
+  20% { opacity: 0.9; }
+  100% { transform: rotate(240deg) translateY(-32px) scaleY(1.2); opacity: 0; }
+}
+@keyframes divineRayAnim6 {
+  0% { transform: rotate(300deg) translateY(-4px) scaleY(0.1); opacity: 0; }
+  20% { opacity: 0.9; }
+  100% { transform: rotate(300deg) translateY(-32px) scaleY(1.2); opacity: 0; }
+}
