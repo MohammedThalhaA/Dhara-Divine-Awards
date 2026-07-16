@@ -3,7 +3,10 @@ import { Image, Search, ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-reac
 import { fetchGallery, API_BASE } from '@/utils/api';
 
 const highlightImages = [
-  // 1. Single space highlights: (1) to (127) excluding missing indices
+  // 1. Double space highlights: (1) to (46) (Newly added, sorts first in folder due to double space)
+  ...Array.from({ length: 46 }, (_, i) => `/images/Highlights1/Dhara Divine Awards - Highlight  (${i + 1}).png`),
+
+  // 2. Single space highlights: (1) to (127) excluding missing indices
   ...[
     ...Array.from({ length: 53 }, (_, i) => i + 1),
     55, 56, 57, 58, 59,
@@ -11,9 +14,6 @@ const highlightImages = [
     76, 77, 78, 79, 80, 81, 82,
     ...Array.from({ length: 44 }, (_, i) => i + 84) // 84 to 127
   ].map(num => `/images/Highlights1/Dhara Divine Awards - Highlight (${num}).png`),
-
-  // 2. Double space highlights: (1) to (46)
-  ...Array.from({ length: 46 }, (_, i) => `/images/Highlights1/Dhara Divine Awards - Highlight  (${i + 1}).png`),
 
   // 3. E prefix double space highlights: (43) to (57)
   ...Array.from({ length: 15 }, (_, i) => `/images/Highlights1/E Dhara Divine Awards - Highlight  (${i + 43}).png`)
