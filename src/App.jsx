@@ -144,6 +144,7 @@ export default function App() {
   const [homeActiveVideoId, setHomeActiveVideoId] = useState(null);
   const [heroVideoMuted, setHeroVideoMuted] = useState(false);
   const heroVideoRef = React.useRef(null);
+  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
 
   useEffect(() => {
     const video = heroVideoRef.current;
@@ -155,6 +156,7 @@ export default function App() {
           console.warn("Unmuted autoplay blocked, falling back to muted autoplay:", error);
           if (!heroVideoMuted) {
             setHeroVideoMuted(true);
+            setAutoplayBlocked(true);
             video.muted = true;
             video.play().catch(err => console.error("Muted autoplay fallback failed:", err));
           }
@@ -162,6 +164,28 @@ export default function App() {
       }
     }
   }, [heroVideoMuted]);
+
+  useEffect(() => {
+    if (!autoplayBlocked) return;
+
+    const handleFirstInteraction = () => {
+      setHeroVideoMuted(false);
+      setAutoplayBlocked(false);
+      window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('touchstart', handleFirstInteraction);
+      window.removeEventListener('keydown', handleFirstInteraction);
+    };
+
+    window.addEventListener('click', handleFirstInteraction);
+    window.addEventListener('touchstart', handleFirstInteraction, { passive: true });
+    window.addEventListener('keydown', handleFirstInteraction);
+
+    return () => {
+      window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('touchstart', handleFirstInteraction);
+      window.removeEventListener('keydown', handleFirstInteraction);
+    };
+  }, [autoplayBlocked]);
 
   // Thank You State
   const [successData, setSuccessData] = useState(null);
