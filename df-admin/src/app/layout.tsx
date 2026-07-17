@@ -9,7 +9,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Dhara Foundations | Divine Awards",
+  title: "Dhara Divine Awards",
   description: "An annual celebration honouring selfless individuals in the path of spiritual and social service.",
   manifest: "/site.webmanifest",
 };
