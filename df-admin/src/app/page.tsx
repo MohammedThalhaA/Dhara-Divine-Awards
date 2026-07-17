@@ -123,10 +123,9 @@ export default function HomeApp() {
   const [dashboardCategory, setDashboardCategory] = useState('seva');
   const [subdomain, setSubdomain] = useState('');
   const [homeActiveVideoId, setHomeActiveVideoId] = useState<string | null>(null);
-  const [heroVideoMuted, setHeroVideoMuted] = useState(false);
+  const [heroVideoMuted, setHeroVideoMuted] = useState(true);
   const heroVideoRef = React.useRef<HTMLVideoElement>(null);
   const heroObserverRef = React.useRef<IntersectionObserver | null>(null);
-  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
 
   // Effect 1: Forcibly pause/mute video whenever tab changes away from home
   useEffect(() => {
@@ -158,12 +157,10 @@ export default function HomeApp() {
         const playPromise = vid.play();
         if (playPromise !== undefined) {
           playPromise.catch(error => {
-            console.warn("Unmuted autoplay blocked, falling back to muted autoplay:", error);
-            if (!heroVideoMuted) {
-              setHeroVideoMuted(true);
-              setAutoplayBlocked(true);
+            console.warn("Autoplay blocked, ensuring video is muted to play:", error);
+            if (!vid.muted) {
               vid.muted = true;
-              vid.play().catch(err => console.error("Muted autoplay fallback failed:", err));
+              vid.play().catch(e => console.error("Muted fallback failed:", e));
             }
           });
         }
@@ -182,27 +179,7 @@ export default function HomeApp() {
     };
   }, [heroVideoMuted, activeTab]);
 
-  useEffect(() => {
-    if (!autoplayBlocked) return;
 
-    const handleFirstInteraction = () => {
-      setHeroVideoMuted(false);
-      setAutoplayBlocked(false);
-      window.removeEventListener('click', handleFirstInteraction);
-      window.removeEventListener('touchstart', handleFirstInteraction);
-      window.removeEventListener('keydown', handleFirstInteraction);
-    };
-
-    window.addEventListener('click', handleFirstInteraction);
-    window.addEventListener('touchstart', handleFirstInteraction, { passive: true });
-    window.addEventListener('keydown', handleFirstInteraction);
-
-    return () => {
-      window.removeEventListener('click', handleFirstInteraction);
-      window.removeEventListener('touchstart', handleFirstInteraction);
-      window.removeEventListener('keydown', handleFirstInteraction);
-    };
-  }, [autoplayBlocked]);
 
   // Thank You State
   const [successData, setSuccessData] = useState<any>(null);
