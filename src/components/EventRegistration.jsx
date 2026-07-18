@@ -11,9 +11,7 @@ export default function EventRegistration({ onSubmitSuccess, siteConfig }) {
     organization: '',
     interest: 'Temple administration',
     specialNotes: '',
-    consentTerms: false,
-    consentPhoto: false,
-    consentUpdates: false
+    consentTerms: false
   });
 
   const eventYear = siteConfig?.eventYear || '2026';
@@ -234,34 +232,35 @@ export default function EventRegistration({ onSubmitSuccess, siteConfig }) {
             </div>
           </div>
 
-          <div className="space-y-3 pt-2">
+          <div className="space-y-3 pt-4">
+            <h4 className="text-sm font-bold text-forest-teal-dark mb-2">Terms and Conditions</h4>
             <label className="flex items-start space-x-3 cursor-pointer">
-              <input type="checkbox" name="consentTerms" checked={formData.consentTerms} onChange={handleChange} className="mt-1 w-4 h-4 text-forest-teal rounded border-neutral-300 focus:ring-forest-teal cursor-pointer" />
-              <span className="text-sm text-neutral-600 font-sans">Consent : Agree to terms and conditions</span>
-            </label>
-            <label className="flex items-start space-x-3 cursor-pointer">
-              <input type="checkbox" name="consentPhoto" checked={formData.consentPhoto} onChange={handleChange} className="mt-1 w-4 h-4 text-forest-teal rounded border-neutral-300 focus:ring-forest-teal cursor-pointer" />
-              <span className="text-sm text-neutral-600 font-sans">Consent for Photography and Videography</span>
-            </label>
-            <label className="flex items-start space-x-3 cursor-pointer">
-              <input type="checkbox" name="consentUpdates" checked={formData.consentUpdates} onChange={handleChange} className="mt-1 w-4 h-4 text-forest-teal rounded border-neutral-300 focus:ring-forest-teal cursor-pointer" />
-              <span className="text-sm text-neutral-600 font-sans">Consent to receive updates</span>
+              <input 
+                type="checkbox" 
+                name="consentTerms" 
+                checked={formData.consentTerms} 
+                onChange={handleChange} 
+                className="mt-1 min-w-4 w-4 h-4 text-forest-teal rounded border-neutral-300 focus:ring-forest-teal cursor-pointer" 
+              />
+              <span className="text-sm text-neutral-600 font-sans leading-relaxed">
+                I agree to the Terms and Conditions, provide consent for Photography and Videography, and consent to receive updates.
+              </span>
             </label>
           </div>
 
           <div className="pt-4">
             <button
               type="submit"
-              disabled={!(formData.consentTerms && formData.consentPhoto && formData.consentUpdates)}
+              disabled={!formData.consentTerms}
               className={`w-full py-4 rounded-xl font-sans font-bold text-base transition-all duration-300 ease-in-out flex items-center justify-center space-x-2 border-2 shadow-lg ${
-                (formData.consentTerms && formData.consentPhoto && formData.consentUpdates)
+                formData.consentTerms
                   ? 'bg-gradient-to-r from-[var(--color-saffron-glow)] to-[var(--color-saffron-glow-dark)] text-[#281006] hover:brightness-105 border-transparent hover:border-[#281006] cursor-pointer group hover:shadow-xl hover:-translate-y-0.5'
                   : 'bg-neutral-200 text-neutral-400 border-transparent cursor-not-allowed opacity-75'
               }`}
             >
               <span>Confirm & Register</span>
               <ArrowRight className={`w-5 h-5 transition-transform duration-300 ${
-                (formData.consentTerms && formData.consentPhoto && formData.consentUpdates) ? 'group-hover:translate-x-1' : ''
+                formData.consentTerms ? 'group-hover:translate-x-1' : ''
               }`} />
             </button>
             <p className="text-center text-xs text-neutral-400 mt-3 font-sans">

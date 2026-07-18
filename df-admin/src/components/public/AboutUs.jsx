@@ -257,13 +257,13 @@ export default function AboutUs() {
               {/* Theme Block */}
               <div className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-3">
                 <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--color-saffron-glow)] font-bold block">
-                  Theme for 2025
+                  Theme for 2026
                 </span>
                 <h5 className="text-xl font-bold text-[#FFD27F] font-serif">
-                  "Service Rooted in Spirit"
+                  "Celebrating the Unspoken Celebrities"
                 </h5>
                 <p className="text-xs text-neutral-300 leading-relaxed font-sans">
-                  The 2025 edition celebrates those whose actions are guided by values, purpose, and a deep commitment to humanity.
+                  The 2026 edition celebrates those whose actions are guided by values, purpose, and a deep commitment to humanity.
                 </p>
               </div>
 
