@@ -1,3 +1,5 @@
+import dbData from '../../df-admin/data/db.json';
+
 export const API_BASE = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
   ? 'http://localhost:3000'
   : 'https://dhara-divineawardsadmin.vercel.app';
@@ -53,10 +55,12 @@ export async function fetchGallery() {
   try {
     const res = await fetch(`${API_BASE}/api/gallery`);
     if (!res.ok) throw new Error(`HTTP error ${res.status}`);
-    return await res.json();
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    return data;
   } catch (err) {
-    console.error('Failed to fetch gallery, using local static data:', err);
-    return null;
+    console.error('Failed to fetch gallery, using bundled static data:', err);
+    return dbData.gallery || [];
   }
 }
 
@@ -67,10 +71,12 @@ export async function fetchEvents() {
   try {
     const res = await fetch(`${API_BASE}/api/events`);
     if (!res.ok) throw new Error(`HTTP error ${res.status}`);
-    return await res.json();
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    return data;
   } catch (err) {
-    console.error('Failed to fetch events, using local static data:', err);
-    return null;
+    console.error('Failed to fetch events, using bundled static data:', err);
+    return dbData.events || [];
   }
 }
 
@@ -81,10 +87,14 @@ export async function fetchSiteConfig() {
   try {
     const res = await fetch(`${API_BASE}/api/config`);
     if (!res.ok) throw new Error(`HTTP error ${res.status}`);
-    return await res.json();
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    // Convert array format to single object if needed
+    if (Array.isArray(data) && data.length > 0) return data[0];
+    return data;
   } catch (err) {
-    console.error('Failed to fetch site config:', err);
-    return null;
+    console.error('Failed to fetch site config, using bundled static data:', err);
+    return (dbData.siteConfig && dbData.siteConfig.length > 0) ? dbData.siteConfig[0] : null;
   }
 }
 
