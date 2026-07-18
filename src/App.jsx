@@ -26,7 +26,7 @@ import CorporateCSR from './components/CorporateCSR';
 import AwardNominations from './components/AwardNominations';
 import ThankYouPage from './components/ThankYouPage';
 import CustomCursor from './components/ui/CustomCursor';
-import { fetchSiteConfig, fetchGallery, fetchEvents, getGoogleDriveDirectLink, API_BASE } from './utils/api';
+import { fetchSiteConfig, fetchGallery, fetchEvents, getGoogleDriveDirectLink, API_BASE, staticData } from './utils/api';
 
 const dashboardCategories = [
   { id: 'seva', label: 'Participation & Seva' },
@@ -148,9 +148,17 @@ export default function App() {
   const [heroVideoMuted, setHeroVideoMuted] = useState(true);
   const heroVideoRef = React.useRef(null);
   const heroObserverRef = React.useRef(null);
-  const [siteConfig, setSiteConfig] = useState(null);
-  const [homeGallery, setHomeGallery] = useState([]);
-  const [homeEvents, setHomeEvents] = useState([]);
+  
+  // Initialize state synchronously with static bundled data to prevent loading flash (FOUC)
+  const [siteConfig, setSiteConfig] = useState(
+    (staticData.siteConfig && staticData.siteConfig.length > 0) ? staticData.siteConfig[0] : null
+  );
+  const [homeGallery, setHomeGallery] = useState(
+    (staticData.gallery || []).filter(img => img.featured).sort((a, b) => (b.priority || 0) - (a.priority || 0))
+  );
+  const [homeEvents, setHomeEvents] = useState(
+    (staticData.events || []).filter(ev => ev.featured && ev.type === 'video').sort((a, b) => (b.priority || 0) - (a.priority || 0))
+  );
 
   useEffect(() => {
     fetchSiteConfig().then(config => {
